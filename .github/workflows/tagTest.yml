@@ -15,4 +15,4 @@ jobs:
         run: echo "RELEASE_NUMBER=$((${{ vars.RELEASE_NUMBER }} + 1))" >> $GITHUB_ENV
 
       - name: Use the incremented release number
-        run: echo "New Release Number: $RELEASE_NUMBER"
+        run: echo "New release $RELEASE_NUMBER"
