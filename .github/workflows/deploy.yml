@@ -1,4 +1,4 @@
-name: Deploy to Server
+name: deploy-server
 
 on:
   push:
@@ -13,6 +13,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Read the current release number
+        run: echo "RELEASE_NUMBER=$((${{ vars.RELEASE_NUMBER }} + 1))" >> $GITHUB_ENV
 
       - name: Deploy to server
         uses: appleboy/ssh-action@v1.0.0
