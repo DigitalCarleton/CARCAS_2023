@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: lsit
-        run: |
-          ehco: $(pwd)
+      #   - name: lsit
+      #     run: |
+      #       ehco: $(pwd)
 
       - name: Read the current release number
         run: |
