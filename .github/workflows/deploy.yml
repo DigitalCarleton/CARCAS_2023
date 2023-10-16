@@ -1,4 +1,4 @@
-name: deploy-server
+name: deploy-to-server
 
 on:
   push:
@@ -14,9 +14,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Read the current release number
-        run: echo "RELEASE_NUMBER=$((${{ vars.RELEASE_NUMBER }} + 1))" >> $GITHUB_ENV
-
       - name: Deploy to server
         uses: appleboy/ssh-action@v1.0.0
         with:
@@ -26,4 +23,5 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd ~/public_html 
+            git checkout server
             git pull origin server
