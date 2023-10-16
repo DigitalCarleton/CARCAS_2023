@@ -30,7 +30,7 @@ jobs:
 
       - name: Tag latest commit with version number,  merge branches
         run: |
-          release_number=$(cat ./release_number.txt)
+          release_number=$(cat .release_number.txt)
           git tag -a v$release_number -m "version: $release_number"
           git push origin v$release_number
 
