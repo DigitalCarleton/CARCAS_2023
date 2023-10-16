@@ -1,2 +1,0 @@
-[alias]
-    deploy-server = gh workflow run deploy-server
