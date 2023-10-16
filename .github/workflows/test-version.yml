@@ -8,9 +8,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: lsit
-        run: |
-          ls
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Read the current release number
         run: |
