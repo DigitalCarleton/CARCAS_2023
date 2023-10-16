@@ -29,7 +29,9 @@ jobs:
           git push
 
       - name: Debug - Show all branches
-        run: git branch -a
+        run: |
+          git fetch --unshallow
+          git branch -a
 
       - name: Tag latest commit with version number,  merge branches
         run: |
