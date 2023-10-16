@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: lsit
         run: |
-          pwd
+          ls
 
       - name: Read the current release number
         run: |
