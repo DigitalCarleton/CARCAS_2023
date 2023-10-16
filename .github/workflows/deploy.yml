@@ -34,6 +34,7 @@ jobs:
           git tag -a v$release_number -m "version: $release_number"
           git push origin v$release_number
 
+          git fetch
           git checkout server 
           git merge v$release_number 
           git commit -m "[automated commit]: Merging v$release_number into server branch"
