@@ -18,3 +18,12 @@ jobs:
           echo "New Release Number: $((release_number + 1))" > release_number.txt
           echo "New Release Number: $((release_number + 1))"
         #   echo "New Release Number: $((release_number + 1))" >> $GITHUB_ENV
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "carcas_utility_account"
+          git config --global user.email "burkhardth@carleton.edu"
+
+          git add -A
+          git commit -m "[automated commit]: update version number"
+          git push
