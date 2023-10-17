@@ -25,7 +25,7 @@ jobs:
 
           git fetch
           git checkout main
-          git pull
+          git pull --allow-unrelated-histories
           git add -A
           git commit -m "[automated commit]: update version number"
           git push
@@ -43,7 +43,7 @@ jobs:
 
           git fetch
           git checkout server 
-          git merge v$release_number 
+          git merge v$release_number --allow-unrelated-histories
           git push origin server
 
       - name: Deploy to server
