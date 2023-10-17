@@ -23,7 +23,7 @@ jobs:
           git config --global user.name "carcas_utility_account"
           git config --global user.email "burkhardth@carleton.edu"
 
-          git fetch --unshallow
+          git fetch 
           git checkout main
           git pull 
           git add --force ./.github/.release_number.txt
@@ -41,7 +41,7 @@ jobs:
           git tag -a v$release_number -m "version: $release_number"
           git push origin v$release_number
 
-          git fetch --unshallow
+          git fetch
           git checkout server 
           git merge main
           git push origin server
