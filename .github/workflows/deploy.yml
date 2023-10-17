@@ -13,9 +13,9 @@ jobs:
 
       - name: Read the current release number
         run: |
-          release_number=$(cat .release_number.txt)
+          release_number=$(cat ./.github/.release_number.txt)
           echo "Current Release Number: $release_number"
-          echo "$((release_number + 1))" > .release_number.txt
+          echo "$((release_number + 1))" > ./.github/.release_number.txt
           echo "New Release Number: $((release_number + 1))"
 
       - name: Update current release number in repo
@@ -35,7 +35,7 @@ jobs:
 
       - name: Tag latest commit with version number,  merge branches
         run: |
-          release_number=$(cat .release_number.txt)
+          release_number=$(cat ./.github/.release_number.txt)
           git tag -a v$release_number -m "version: $release_number"
           git push origin v$release_number
 
