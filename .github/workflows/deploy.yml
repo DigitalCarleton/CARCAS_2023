@@ -30,10 +30,10 @@ jobs:
           git commit -m "[automated commit]: update version number"
           git push
 
-      - name: Debug - Show all branches
-        run: |
-          git fetch --unshallow
-          git branch -a
+      # - name: Debug - Show all branches
+      #   run: |
+      #     git fetch --unshallow
+      #     git branch -a
 
       - name: Tag latest commit with version number,  merge branches
         run: |
