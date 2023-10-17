@@ -26,7 +26,7 @@ jobs:
           git fetch --unshallow
           git checkout main
           git pull 
-          git add -A
+          git add --force ./.github/.release_number.txt
           git commit -m "[automated commit]: update version number"
           git push
 
