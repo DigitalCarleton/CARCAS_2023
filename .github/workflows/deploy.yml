@@ -23,7 +23,9 @@ jobs:
           git config --global user.name "carcas_utility_account"
           git config --global user.email "burkhardth@carleton.edu"
 
+          git fetch
           git checkout main
+          git pull
           git add -A
           git commit -m "[automated commit]: update version number"
           git push
