@@ -1,4 +1,4 @@
-.github/.release_number.txt
+# do not change these - these are files that need to get be ignored from the server
 HomericShipOars/
 HomericShipSail/
 *.zip
