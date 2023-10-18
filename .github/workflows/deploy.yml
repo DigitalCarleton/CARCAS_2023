@@ -26,7 +26,8 @@ jobs:
           git config --global user.email "burkhardth@carleton.edu"
 
           git checkout main
-          git commit -A
+          git add -A
+          git commit
           git push
 
           release_number=$(cat ./.github/.release_number.txt)
