@@ -23,14 +23,19 @@ Having the ability to arbitrarily update the site at anytime is great, because i
 This workflow may sound complicated, but I (burkhardth@carleton.edu) have created a GitHub action workflow that takes care of everything. So there are really only a handful of git commands a developer working on this project will need to know:
 
 - Whenever you want to **push the changes you have made locally to the GitHub repository (on the main branch)**, you use the following sequence of commands:
+
   `git pull` - update your local repository to ensure it is up to date with GitHub
+
   `git add *`- tell Git that you want to upload ALL the changes you made
+
   `git commit -m "your message here"` - create a commit to send to GitHub
+
   `git push` - send your changes to the GitHub "main" branch!
 
   NOTE: developers can also absolutely use the GitHub desktop tool, which requires no command line knowledge. This is a preferable option for people less familiar with Git.
 
 - When you want to update the live website to reflect the current GitHub repo: ensure that you have pushed all the changes you want to see to the GitHub repo on "main" (see the previous step) and then run this command:
+
   `git deploy` - this runs a custom workflow that tags the current state of the repository (i.e. adds a name to it, this isn't important, just a bonus feature), updates the server branch to reflect the main branch, and then automatically runs an SSH command to tells 3dveiwer.sites.carleton.edu to update it's source code (in the "www" folder) from the server branch.
 
   NOTE: Developers who don't want to use the command line can manually run this process on GitHub.com with a button.
