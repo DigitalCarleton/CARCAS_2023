@@ -22,9 +22,14 @@ jobs:
 
       - name: Update current release number in repo
         run: |
-          release_number=$(cat ./.github/.release_number.txt)
           git config --global user.name "carcas_utility_account"
           git config --global user.email "burkhardth@carleton.edu"
+
+          git checkout main
+          git commit -A
+          git push
+
+          release_number=$(cat ./.github/.release_number.txt)
 
           git fetch
           git checkout main
