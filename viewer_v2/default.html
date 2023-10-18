@@ -57,6 +57,11 @@
 
       .dimensionLineContainer{
         pointer-events: none;
+        display: none;
+        /* display: block; */
+      }
+
+      .dimensionLineContainer.loaded {
         display: block;
       }
 
@@ -368,5 +373,14 @@
     <!-- <script src="script.js"></script> -->
     <!-- Loads <model-viewer> for browsers: -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script> 
+    // This script is so that the dimension lines don't show up until the model is loaded
+      const modelViewer2 = document.querySelector('model-viewer');
+      const dimensionLineContainer = document.querySelector('.dimensionLineContainer');
+
+      modelViewer2.addEventListener('load', function() {
+        dimensionLineContainer.classList.add('loaded');
+      });
+    </script>
   </body>
 </html>
