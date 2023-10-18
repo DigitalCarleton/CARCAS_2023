@@ -30,6 +30,8 @@ jobs:
           git pull
           git add -A
           git commit -m "[automated]: release $new_release_number"
+          git push
+
           git tag -a v$new_release_number -m "Release $new_release_number"
           git push origin v$new_release_number
 
