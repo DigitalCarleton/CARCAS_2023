@@ -30,7 +30,7 @@ jobs:
           git checkout main
           git pull
           git add --force ./.github/.release_number.txt
-          git commit -m "[automated]: release "$release_number)
+          git commit -m "[automated]: release $release_number"
           git tag -a v$release_number -m "Release $release_number"
           git push
 
