@@ -22,8 +22,8 @@ jobs:
 
       # - name: Update current release number in repo
       #   run: |
-      #     git config --global user.name "carcas_utility_account"
-      #     git config --global user.email "burkhardth@carleton.edu"
+      # git config --global user.name "carcas_utility_account"
+      # git config --global user.email "burkhardth@carleton.edu"
 
       #     git fetch
       #     git checkout main
@@ -41,7 +41,8 @@ jobs:
 
       - name: merge branches
         run: |
-
+          git config --global user.name "carcas_utility_account"
+          git config --global user.email "burkhardth@carleton.edu"
           git fetch
           git checkout server 
           git merge main
