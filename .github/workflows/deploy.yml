@@ -32,7 +32,7 @@ jobs:
           git add --force ./.github/.release_number.txt
           git commit -m "[automated]: release $release_number"
           git tag -a v$release_number -m "Release $release_number"
-          git push
+          git push origin v$release_number
 
       # - name: Debug - Show all branches
       #   run: |
