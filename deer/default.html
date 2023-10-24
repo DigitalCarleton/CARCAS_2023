@@ -10,98 +10,6 @@
     <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
   </head>
   <body>
-    <style>
-      #controls {
-        /* position: absolute;
-        top: 0;
-        left: 0; */
-        max-width: unset;
-        transform: unset;
-        pointer-events: auto;
-        display: inline-block;
-      }
-
-      #controlContainer {
-        width: 100%;
-        position: absolute; 
-        text-align: center;
-      }
-
-      @media (min-width: 768px) {
-        #controlContainer {
-          top: 0;
-          left: 0;
-        }
-      }
-      
-      
-      @media (max-width: 767px) {
-        #controlContainer {
-          bottom: 0;
-          left: 0;
-        }
-      }
-    
-      .dot{
-        display: block;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        border: none;
-        box-sizing: border-box;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-        background: #fff;
-        pointer-events: none;
-        --min-hotspot-opacity: 0;
-      }
-    
-      .dim{
-        background: #fff;
-        border-radius: 4px;
-        border: none;
-        box-sizing: border-box;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-        color: rgba(0, 0, 0, 0.8);
-        display: inline-block;
-        font-family: Futura, Helvetica Neue, sans-serif;
-        font-size: 18px;
-        font-weight: 700;
-        max-width: 128px;
-        overflow-wrap: break-word;
-        padding: 0.5em 1em;
-        /* position: absolute; */
-        width: max-content;
-        height: max-content;
-        transform: translate3d(-50%, -50%, 0);
-        pointer-events: none;
-        --min-hotspot-opacity: 0;
-      }
-
-      
-
-      .dimensionLineContainer{
-        pointer-events: none;
-        display: block;
-      }
-
-      .dimensionLine{
-        stroke: #16a5e6;
-        stroke-width: 2;
-        stroke-dasharray: 2;
-      }
-    
-      .show{
-        --min-hotspot-opacity: 1;
-      }
-    
-      .hide{
-        display: none;
-      }
-      /* This keeps child nodes hidden while the element loads */
-      /* :not(:defined) > * {
-        display: none;
-      } */
-    </style>
     <!-- <model-viewer> HTML element -->
     
     <model-viewer id="deer-skull" 
@@ -389,5 +297,14 @@
     <!-- <script src="script.js"></script> -->
     <!-- Loads <model-viewer> for browsers: -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script> 
+      // This script is so that the dimension lines don't show up until the model is loaded
+        const modelViewer2 = document.querySelector('model-viewer');
+        const dimensionLineContainer = document.querySelector('.dimensionLineContainer');
+  
+        modelViewer2.addEventListener('load', function() {
+          dimensionLineContainer.classList.add('loaded');
+        });
+      </script>
   </body>
 </html>
