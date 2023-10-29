@@ -1,4 +1,4 @@
-name: deploy-to-server_old
+name: DEPRECATED_deploy-to-server_old
 
 on:
   workflow_dispatch:
