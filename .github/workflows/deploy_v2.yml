@@ -1,0 +1,53 @@
+name: deploy-to-server
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Get the current version number
+        id: get-version-number
+        run: |
+          # Call the get_version_number.sh script
+          bash ./github/scripts/get_version_number.sh
+
+      - name: Create new tag
+        run: |
+          new_version_num=${{ steps.get-version-number.outputs.next-version }}
+
+          git config --global user.name "carcas_utility_account"
+          git config --global user.email "burkhardth@carleton.edu"
+
+
+          git fetch
+          git checkout main
+          git pull
+          git tag -a v$new_version_num -m "Release $new_version_num"
+          git push origin v$new_version_num
+
+      # - name: merge branches
+      #   run: |
+      #     git fetch
+      #     git checkout server
+      #     git merge main
+      #     git push origin server
+
+      # - name: Deploy to server
+      #   uses: appleboy/ssh-action@v1.0.0
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USERNAME }}
+      #     key: ${{ secrets.KEY }}
+      #     port: ${{ secrets.PORT }}
+      #     script: |
+      #       cd ~/public_html
+      #       git checkout server
+      #       git pull origin server
