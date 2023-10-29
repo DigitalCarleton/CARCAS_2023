@@ -1,4 +1,4 @@
-name: deploy-to-server-v2
+name: deploy-to-server
 
 on:
   workflow_dispatch:
@@ -26,28 +26,27 @@ jobs:
           git config --global user.name "carcas_utility_account"
           git config --global user.email "burkhardth@carleton.edu"
 
-
           git fetch
           git checkout main
           git pull
           git tag -a v$new_version_num -m "Release $new_version_num"
           git push origin v$new_version_num
 
-      # - name: merge branches
-      #   run: |
-      #     git fetch
-      #     git checkout server
-      #     git merge main
-      #     git push origin server
+      - name: merge branches
+        run: |
+          git fetch
+          git checkout server
+          git merge main
+          git push origin server
 
-      # - name: Deploy to server
-      #   uses: appleboy/ssh-action@v1.0.0
-      #   with:
-      #     host: ${{ secrets.HOST }}
-      #     username: ${{ secrets.USERNAME }}
-      #     key: ${{ secrets.KEY }}
-      #     port: ${{ secrets.PORT }}
-      #     script: |
-      #       cd ~/public_html
-      #       git checkout server
-      #       git pull origin server
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd ~/public_html
+            git checkout server
+            git pull origin server
