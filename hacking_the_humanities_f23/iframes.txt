@@ -1,0 +1,11 @@
+======= BIBLE IFRAME ======= 
+<iframe src="https://3dviewer.sites.carleton.edu/hacking_the_humanities_f23/Bible/" title="Bible"></iframe>
+
+======= DUCK IFRAME ======= 
+<iframe src="https://3dviewer.sites.carleton.edu/hacking_the_humanities_f23/Duck/" title="Duck"></iframe>
+
+======= PIPE IFRAME ======= 
+<iframe src="https://3dviewer.sites.carleton.edu/hacking_the_humanities_f23/Pipe/" title="Pipe"></iframe>
+
+======= TROPHY IFRAME ======= 
+<iframe src="https://3dviewer.sites.carleton.edu/hacking_the_humanities_f23/Trophy/" title="Trophy"></iframe>
