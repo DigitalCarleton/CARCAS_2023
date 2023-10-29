@@ -17,7 +17,7 @@ jobs:
         id: get-version-number
         run: |
           # Call the get_version_number.sh script
-          bash ./github/scripts/get_version_number.sh
+          bash ./.github/scripts/get_version_number.sh
 
       - name: Create new tag
         run: |
