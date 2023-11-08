@@ -5,4 +5,7 @@ HomericShipSail/
 museum_objects/
 voyager/
 *.vscode
-Writerside # this for a documentation library I'm messing around with, only temporary - Henry 10/31/2023
+
+# this is for a documentation library I'm messing around with, only temporary - Henry 10/31/2023
+Writerside 
+*.idea
