@@ -99,8 +99,10 @@
       function setVisibility(element) {
         if (checkbox.checked) {
           element.classList.remove('hide');
+          dimensionLineContainer.classList.add('loaded'); // show the lines
         } else {
           element.classList.add('hide');
+          dimensionLineContainer.classList.remove('loaded'); // hide the lines
         }
       }
     
@@ -296,7 +298,7 @@
 
     </script>
 
-    <!-- <script src="script.js"></script> -->
+    <script src="script.js"></script>
     <!-- Loads <model-viewer> for browsers: -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script> 

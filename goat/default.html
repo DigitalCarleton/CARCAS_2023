@@ -99,8 +99,10 @@
       function setVisibility(element) {
         if (checkbox.checked) {
           element.classList.remove('hide');
+          dimensionLineContainer.classList.add('loaded'); // show the lines
         } else {
           element.classList.add('hide');
+          dimensionLineContainer.classList.remove('loaded'); // hide the lines
         }
       }
     
