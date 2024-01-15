@@ -25,7 +25,9 @@ model-viewer {
   top: 50%;
   transform: translate3d(-50%, -50%, 0);
   border-radius: 25px;
-  box-shadow: 0px 3px 10px 3px rgba(0, 0, 0, 0.5), 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
+  box-shadow:
+    0px 3px 10px 3px rgba(0, 0, 0, 0.5),
+    0px 0px 5px 1px rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.9);
   background-color: rgba(0, 0, 0, 0.5);
 }
@@ -56,17 +58,20 @@ model-viewer {
   white-space: nowrap;
   bottom: 16px;
   padding: 0px 16px 0px 40px;
-  font-family: Roboto Regular, Helvetica Neue, sans-serif;
+  font-family:
+    Roboto Regular,
+    Helvetica Neue,
+    sans-serif;
   font-size: 14px;
-  color:#4285f4;
+  color: #4285f4;
   height: 36px;
   line-height: 36px;
   border-radius: 18px;
-  border: 1px solid #DADCE0;
+  border: 1px solid #dadce0;
 }
 
 #ar-button:active {
-  background-color: #E8EAED;
+  background-color: #e8eaed;
 }
 
 #ar-button:focus {
@@ -78,13 +83,21 @@ model-viewer {
 }
 
 @keyframes circle {
-  from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
-  to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
+  from {
+    transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg);
+  }
 }
 
 @keyframes elongate {
-  from { transform: translateX(100px); }
-  to   { transform: translateX(-100px); }
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(-100px);
+  }
 }
 
 model-viewer > #ar-prompt {
@@ -102,7 +115,6 @@ model-viewer[ar-status="session-started"] > #ar-prompt {
 model-viewer > #ar-prompt > img {
   animation: circle 4s linear infinite;
 }
-
 
 #controls {
   /* position: absolute;
@@ -127,7 +139,6 @@ model-viewer > #ar-prompt > img {
   }
 }
 
-
 @media (max-width: 767px) {
   #controlContainer {
     bottom: 8px;
@@ -135,7 +146,7 @@ model-viewer > #ar-prompt > img {
   }
 }
 
-.dot{
+.dot {
   display: block;
   width: 12px;
   height: 12px;
@@ -148,7 +159,7 @@ model-viewer > #ar-prompt > img {
   --min-hotspot-opacity: 0;
 }
 
-.dim{
+.dim {
   background: #fff;
   border-radius: 4px;
   border: none;
@@ -156,7 +167,10 @@ model-viewer > #ar-prompt > img {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   color: rgba(0, 0, 0, 0.8);
   display: inline-block;
-  font-family: Futura, Helvetica Neue, sans-serif;
+  font-family:
+    Futura,
+    Helvetica Neue,
+    sans-serif;
   font-size: 18px;
   font-weight: 700;
   max-width: 128px;
@@ -170,8 +184,7 @@ model-viewer > #ar-prompt > img {
   --min-hotspot-opacity: 0;
 }
 
-
-.dimensionLineContainer{
+.dimensionLineContainer {
   pointer-events: none;
   display: none;
   /* display: block; */
@@ -181,17 +194,17 @@ model-viewer > #ar-prompt > img {
   display: block;
 }
 
-.dimensionLine{
+.dimensionLine {
   stroke: #16a5e6;
   stroke-width: 2;
   stroke-dasharray: 2;
 }
 
-.show{
+.show {
   --min-hotspot-opacity: 1;
 }
 
-.hide{
+.hide {
   display: none;
 }
 /* This keeps child nodes hidden while the element loads */

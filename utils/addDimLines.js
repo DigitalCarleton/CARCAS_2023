@@ -1,5 +1,4 @@
-
-const modelViewer = document.querySelector('model-viewer');
+const modelViewer = document.querySelector("model-viewer");
 
 // modelViewer.querySelector('#src').addEventListener('input', (event) => {
 //   modelViewer.src = event.target.value;
@@ -52,140 +51,161 @@ modelViewer.innerHTML += `
   </div>
 
 
-`
+`;
 
-
-const checkbox = modelViewer.querySelector('#show-dimensions');
+const checkbox = modelViewer.querySelector("#show-dimensions");
 
 function setVisibility(element) {
-    if (checkbox.checked) {
-        element.classList.remove('hide');
-        dimensionLineContainer.classList.add('loaded'); // show the lines
-    } else {
-        element.classList.add('hide');
-        dimensionLineContainer.classList.remove('loaded'); // hide the lines
-    }
+  if (checkbox.checked) {
+    element.classList.remove("hide");
+    dimensionLineContainer.classList.add("loaded"); // show the lines
+  } else {
+    element.classList.add("hide");
+    dimensionLineContainer.classList.remove("loaded"); // hide the lines
+  }
 }
 
-checkbox.addEventListener('change', () => {
-    setVisibility(modelViewer.querySelector('#dimLines'));
-    modelViewer.querySelectorAll('button').forEach((hotspot) => {
-        setVisibility(hotspot);
-    });
+checkbox.addEventListener("change", () => {
+  setVisibility(modelViewer.querySelector("#dimLines"));
+  modelViewer.querySelectorAll("button").forEach((hotspot) => {
+    setVisibility(hotspot);
+  });
 });
-
 
 // Give each line a start and end point,
 // Use the midpoint to check for visibility
 
 // update svg
 function drawLine(svgLine, dotHotspot1, dotHotspot2, dimensionHotspot) {
-    if (dotHotspot1 && dotHotspot2) {
-        svgLine.setAttribute('x1', dotHotspot1.canvasPosition.x);
-        svgLine.setAttribute('y1', dotHotspot1.canvasPosition.y);
-        svgLine.setAttribute('x2', dotHotspot2.canvasPosition.x);
-        svgLine.setAttribute('y2', dotHotspot2.canvasPosition.y);
+  if (dotHotspot1 && dotHotspot2) {
+    svgLine.setAttribute("x1", dotHotspot1.canvasPosition.x);
+    svgLine.setAttribute("y1", dotHotspot1.canvasPosition.y);
+    svgLine.setAttribute("x2", dotHotspot2.canvasPosition.x);
+    svgLine.setAttribute("y2", dotHotspot2.canvasPosition.y);
 
-        // use provided optional hotspot to tie visibility of this svg line to
-        if (dimensionHotspot && !dimensionHotspot.facingCamera) {
-            svgLine.classList.add('hide');
-        }
-        else {
-            svgLine.classList.remove('hide');
-        }
+    // use provided optional hotspot to tie visibility of this svg line to
+    if (dimensionHotspot && !dimensionHotspot.facingCamera) {
+      svgLine.classList.add("hide");
+    } else {
+      svgLine.classList.remove("hide");
     }
+  }
 }
 
-const dimLines = modelViewer.querySelectorAll('line');
+const dimLines = modelViewer.querySelectorAll("line");
 
 const renderSVG = () => {
-    drawLine(dimLines[0], modelViewer.queryHotspot('hotspot-dot+X-Y+Z'), modelViewer.queryHotspot('hotspot-dot+X-Y-Z'), modelViewer.queryHotspot('hotspot-dim+X-Y'));
-    drawLine(dimLines[1], modelViewer.queryHotspot('hotspot-dot+X-Y-Z'), modelViewer.queryHotspot('hotspot-dot+X+Y-Z'), modelViewer.queryHotspot('hotspot-dim+X-Z'));
-    // drawLine(dimLines[2], modelViewer.queryHotspot('hotspot-dot+X+Y-Z'), modelViewer.queryHotspot('hotspot-dot-X+Y-Z')); // always visible
-    drawLine(dimLines[2], modelViewer.queryHotspot('hotspot-dot+X+Y-Z'), modelViewer.queryHotspot('hotspot-dot-X+Y-Z'), modelViewer.queryHotspot('hotspot-dim+Y-Z'));
-    drawLine(dimLines[3], modelViewer.queryHotspot('hotspot-dot-X-Y+Z'), modelViewer.queryHotspot('hotspot-dot+X-Y+Z'), modelViewer.queryHotspot('hotspot-dim-Y+Z'));
-    drawLine(dimLines[4], modelViewer.queryHotspot('hotspot-dot-X+Y-Z'), modelViewer.queryHotspot('hotspot-dot-X-Y-Z'), modelViewer.queryHotspot('hotspot-dim-X-Z'));
-    drawLine(dimLines[5], modelViewer.queryHotspot('hotspot-dot-X-Y-Z'), modelViewer.queryHotspot('hotspot-dot-X-Y+Z'), modelViewer.queryHotspot('hotspot-dim-X-Y'));
+  drawLine(
+    dimLines[0],
+    modelViewer.queryHotspot("hotspot-dot+X-Y+Z"),
+    modelViewer.queryHotspot("hotspot-dot+X-Y-Z"),
+    modelViewer.queryHotspot("hotspot-dim+X-Y"),
+  );
+  drawLine(
+    dimLines[1],
+    modelViewer.queryHotspot("hotspot-dot+X-Y-Z"),
+    modelViewer.queryHotspot("hotspot-dot+X+Y-Z"),
+    modelViewer.queryHotspot("hotspot-dim+X-Z"),
+  );
+  // drawLine(dimLines[2], modelViewer.queryHotspot('hotspot-dot+X+Y-Z'), modelViewer.queryHotspot('hotspot-dot-X+Y-Z')); // always visible
+  drawLine(
+    dimLines[2],
+    modelViewer.queryHotspot("hotspot-dot+X+Y-Z"),
+    modelViewer.queryHotspot("hotspot-dot-X+Y-Z"),
+    modelViewer.queryHotspot("hotspot-dim+Y-Z"),
+  );
+  drawLine(
+    dimLines[3],
+    modelViewer.queryHotspot("hotspot-dot-X-Y+Z"),
+    modelViewer.queryHotspot("hotspot-dot+X-Y+Z"),
+    modelViewer.queryHotspot("hotspot-dim-Y+Z"),
+  );
+  drawLine(
+    dimLines[4],
+    modelViewer.queryHotspot("hotspot-dot-X+Y-Z"),
+    modelViewer.queryHotspot("hotspot-dot-X-Y-Z"),
+    modelViewer.queryHotspot("hotspot-dim-X-Z"),
+  );
+  drawLine(
+    dimLines[5],
+    modelViewer.queryHotspot("hotspot-dot-X-Y-Z"),
+    modelViewer.queryHotspot("hotspot-dot-X-Y+Z"),
+    modelViewer.queryHotspot("hotspot-dim-X-Y"),
+  );
 };
 
-modelViewer.addEventListener('camera-change', renderSVG);
+modelViewer.addEventListener("camera-change", renderSVG);
 
 // Set the positions of all the hotspots on page load
 
-modelViewer.addEventListener('load', () => {
-    const center = modelViewer.getBoundingBoxCenter();
-    const size = modelViewer.getDimensions();
-    const x2 = size.x / 2;
-    const y2 = size.y / 2;
-    const z2 = size.z / 2;
+modelViewer.addEventListener("load", () => {
+  const center = modelViewer.getBoundingBoxCenter();
+  const size = modelViewer.getDimensions();
+  const x2 = size.x / 2;
+  const y2 = size.y / 2;
+  const z2 = size.z / 2;
 
-    modelViewer.updateHotspot({
-        name: 'hotspot-dot+X-Y+Z',
-        position: `${center.x + x2} ${center.y - y2} ${center.z + z2}`
-    });
+  modelViewer.updateHotspot({
+    name: "hotspot-dot+X-Y+Z",
+    position: `${center.x + x2} ${center.y - y2} ${center.z + z2}`,
+  });
 
-    modelViewer.updateHotspot({
-        name: 'hotspot-dim+X-Y',
-        position: `${center.x + x2} ${center.y - y2} ${center.z}`
-    });
+  modelViewer.updateHotspot({
+    name: "hotspot-dim+X-Y",
+    position: `${center.x + x2} ${center.y - y2} ${center.z}`,
+  });
 
+  modelViewer.updateHotspot({
+    name: "hotspot-dot+X-Y-Z",
+    position: `${center.x + x2} ${center.y - y2} ${center.z - z2}`,
+  });
 
-    modelViewer.updateHotspot({
-        name: 'hotspot-dot+X-Y-Z',
-        position: `${center.x + x2} ${center.y - y2} ${center.z - z2}`
-    });
+  modelViewer.updateHotspot({
+    name: "hotspot-dim+X-Z",
+    position: `${center.x + x2} ${center.y} ${center.z - z2}`,
+  });
 
-    modelViewer.updateHotspot({
-        name: 'hotspot-dim+X-Z',
-        position: `${center.x + x2} ${center.y} ${center.z - z2}`
-    });
+  modelViewer.updateHotspot({
+    name: "hotspot-dot+X+Y-Z",
+    position: `${center.x + x2} ${center.y + y2} ${center.z - z2}`,
+  });
 
+  modelViewer.updateHotspot({
+    name: "hotspot-dim+Y-Z",
+    position: `${center.x} ${center.y + y2} ${center.z - z2}`,
+  });
 
-    modelViewer.updateHotspot({
-        name: 'hotspot-dot+X+Y-Z',
-        position: `${center.x + x2} ${center.y + y2} ${center.z - z2}`
-    });
+  modelViewer.updateHotspot({
+    name: "hotspot-dot-X+Y-Z",
+    position: `${center.x - x2} ${center.y + y2} ${center.z - z2}`,
+  });
 
-    modelViewer.updateHotspot({
-        name: 'hotspot-dim+Y-Z',
-        position: `${center.x} ${center.y + y2} ${center.z - z2}`
-    });
+  modelViewer.updateHotspot({
+    name: "hotspot-dim-X-Z",
+    position: `${center.x - x2} ${center.y} ${center.z - z2}`,
+  });
 
+  modelViewer.updateHotspot({
+    name: "hotspot-dot-X-Y-Z",
+    position: `${center.x - x2} ${center.y - y2} ${center.z - z2}`,
+  });
 
-    modelViewer.updateHotspot({
-        name: 'hotspot-dot-X+Y-Z',
-        position: `${center.x - x2} ${center.y + y2} ${center.z - z2}`
-    });
+  modelViewer.updateHotspot({
+    name: "hotspot-dim-X-Y",
+    position: `${center.x - x2} ${center.y - y2} ${center.z}`,
+  });
 
-    modelViewer.updateHotspot({
-        name: 'hotspot-dim-X-Z',
-        position: `${center.x - x2} ${center.y} ${center.z - z2}`
-    });
+  modelViewer.updateHotspot({
+    name: "hotspot-dot-X-Y+Z",
+    position: `${center.x - x2} ${center.y - y2} ${center.z + z2}`,
+  });
 
+  modelViewer.updateHotspot({
+    name: "hotspot-dim-Y+Z",
+    position: `${center.x} ${center.y - y2} ${center.z + z2}`,
+  });
 
-    modelViewer.updateHotspot({
-        name: 'hotspot-dot-X-Y-Z',
-        position: `${center.x - x2} ${center.y - y2} ${center.z - z2}`
-    });
-
-    modelViewer.updateHotspot({
-        name: 'hotspot-dim-X-Y',
-        position: `${center.x - x2} ${center.y - y2} ${center.z}`
-    });
-
-
-    modelViewer.updateHotspot({
-        name: 'hotspot-dot-X-Y+Z',
-        position: `${center.x - x2} ${center.y - y2} ${center.z + z2}`
-    });
-
-    modelViewer.updateHotspot({
-        name: 'hotspot-dim-Y+Z',
-        position: `${center.x} ${center.y - y2} ${center.z + z2}`
-    });
-
-
-    renderSVG();
+  renderSVG();
 });
 
 // Add the text in appropriate units based off of the radio button
@@ -195,72 +215,74 @@ modelViewer.addEventListener('load', () => {
 
 // size of model viewer is in meters by default
 
-const toInchesConversion = 39.3701 // Add more decimal places for higher precision!
+const toInchesConversion = 39.3701; // Add more decimal places for higher precision!
 
 function drawLabels(size) {
-    if(document.getElementById('cms').checked == true) {
-        modelViewer.querySelector('button[slot="hotspot-dim+X-Y"]').textContent =
-            `${(size.z * 100).toFixed(1)} cm`;
+  if (document.getElementById("cms").checked == true) {
+    modelViewer.querySelector('button[slot="hotspot-dim+X-Y"]').textContent =
+      `${(size.z * 100).toFixed(1)} cm`;
 
-        modelViewer.querySelector('button[slot="hotspot-dim+X-Z"]').textContent =
-            `${(size.y * 100).toFixed(1)} cm`;
+    modelViewer.querySelector('button[slot="hotspot-dim+X-Z"]').textContent =
+      `${(size.y * 100).toFixed(1)} cm`;
 
-        modelViewer.querySelector('button[slot="hotspot-dim+Y-Z"]').textContent =
-            `${(size.x * 100).toFixed(1)} cm`;
+    modelViewer.querySelector('button[slot="hotspot-dim+Y-Z"]').textContent =
+      `${(size.x * 100).toFixed(1)} cm`;
 
-        modelViewer.querySelector('button[slot="hotspot-dim-X-Z"]').textContent =
-            `${(size.y * 100).toFixed(1)} cm`;
+    modelViewer.querySelector('button[slot="hotspot-dim-X-Z"]').textContent =
+      `${(size.y * 100).toFixed(1)} cm`;
 
-        modelViewer.querySelector('button[slot="hotspot-dim-X-Y"]').textContent =
-            `${(size.z * 100).toFixed(1)} cm`;
+    modelViewer.querySelector('button[slot="hotspot-dim-X-Y"]').textContent =
+      `${(size.z * 100).toFixed(1)} cm`;
 
-        modelViewer.querySelector('button[slot="hotspot-dim-Y+Z"]').textContent =
-            `${(size.x * 100).toFixed(1)} cm`;
-    } else {
-        modelViewer.querySelector('button[slot="hotspot-dim+X-Y"]').textContent =
-            `${(size.z * toInchesConversion).toFixed(1)} in`;
+    modelViewer.querySelector('button[slot="hotspot-dim-Y+Z"]').textContent =
+      `${(size.x * 100).toFixed(1)} cm`;
+  } else {
+    modelViewer.querySelector('button[slot="hotspot-dim+X-Y"]').textContent =
+      `${(size.z * toInchesConversion).toFixed(1)} in`;
 
-        modelViewer.querySelector('button[slot="hotspot-dim+X-Z"]').textContent =
-            `${(size.y * toInchesConversion).toFixed(1)} in`;
+    modelViewer.querySelector('button[slot="hotspot-dim+X-Z"]').textContent =
+      `${(size.y * toInchesConversion).toFixed(1)} in`;
 
-        modelViewer.querySelector('button[slot="hotspot-dim+Y-Z"]').textContent =
-            `${(size.x * toInchesConversion).toFixed(1)} in`;
+    modelViewer.querySelector('button[slot="hotspot-dim+Y-Z"]').textContent =
+      `${(size.x * toInchesConversion).toFixed(1)} in`;
 
-        modelViewer.querySelector('button[slot="hotspot-dim-X-Z"]').textContent =
-            `${(size.y * toInchesConversion).toFixed(1)} in`;
+    modelViewer.querySelector('button[slot="hotspot-dim-X-Z"]').textContent =
+      `${(size.y * toInchesConversion).toFixed(1)} in`;
 
-        modelViewer.querySelector('button[slot="hotspot-dim-X-Y"]').textContent =
-            `${(size.z * toInchesConversion).toFixed(1)} in`;
+    modelViewer.querySelector('button[slot="hotspot-dim-X-Y"]').textContent =
+      `${(size.z * toInchesConversion).toFixed(1)} in`;
 
-        modelViewer.querySelector('button[slot="hotspot-dim-Y+Z"]').textContent =
-            `${(size.x * toInchesConversion).toFixed(1)} in`;
-    }
+    modelViewer.querySelector('button[slot="hotspot-dim-Y+Z"]').textContent =
+      `${(size.x * toInchesConversion).toFixed(1)} in`;
+  }
 }
 
-modelViewer.addEventListener('load', () => {
-    const center = modelViewer.getBoundingBoxCenter();
-    const size = modelViewer.getDimensions();
-    const x2 = size.x / 2;
-    const y2 = size.y / 2;
-    const z2 = size.z / 2;
+modelViewer.addEventListener("load", () => {
+  const center = modelViewer.getBoundingBoxCenter();
+  const size = modelViewer.getDimensions();
+  const x2 = size.x / 2;
+  const y2 = size.y / 2;
+  const z2 = size.z / 2;
 
-    drawLabels(size);
+  drawLabels(size);
 });
 
-modelViewer.addEventListener('change', () => {
-    const center = modelViewer.getBoundingBoxCenter();
-    const size = modelViewer.getDimensions();
-    const x2 = size.x / 2;
-    const y2 = size.y / 2;
-    const z2 = size.z / 2;
+modelViewer.addEventListener("change", () => {
+  const center = modelViewer.getBoundingBoxCenter();
+  const size = modelViewer.getDimensions();
+  const x2 = size.x / 2;
+  const y2 = size.y / 2;
+  const z2 = size.z / 2;
 
-    drawLabels(size);
+  drawLabels(size);
 });
 
 // This script is so that the dimension lines don't show up until the model is loaded
-const modelViewer2 = document.querySelector('model-viewer');
-const dimensionLineContainer = document.querySelector('.dimensionLineContainer');
+const modelViewer2 = document.querySelector("model-viewer");
+const dimensionLineContainer = document.querySelector(
+  ".dimensionLineContainer",
+);
 
-modelViewer2.addEventListener('load', function () {
-    dimensionLineContainer.classList.add('loaded');
+modelViewer2.addEventListener("load", function () {
+  dimensionLineContainer.classList.add("loaded");
 });
