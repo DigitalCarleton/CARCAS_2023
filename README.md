@@ -4,7 +4,7 @@ Maintained by:
 
 - Erin Watson (watsona@carleton.edu)
 - Henry Burkhardt(burkhardth@carleton.edu)
-- (get other names in here, if needed)
+- Noah Zameer Lee (leen2@carleton.ed)
 
 ## Overview
 
