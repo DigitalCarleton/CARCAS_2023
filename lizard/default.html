@@ -15,14 +15,19 @@
   <body>
     <!-- <model-viewer> HTML element -->
     <model-viewer
-      bounds="tight"
-      src="lizard.glb"
+      id="lizard-skull"
       ar
       ar-modes="webxr scene-viewer quick-look"
-      camera-controls
-      environment-image="neutral"
-      poster="poster.webp"
+      ar-scale="fixed"
+      min-camera-orbit="-180deg 0deg auto"
+      max-camera-orbit="180deg 180deg auto"
       shadow-intensity="1"
+      camera-controls
+      touch-action="pan-y"
+      src="lizard_mm.glb"
+      alt="A 3D model of a lizard skull"
+      environment-image="neutral"
+      poster="poster.webp"  
     >
       <div class="progress-bar hide" slot="progress-bar">
         <div class="update-bar"></div>
