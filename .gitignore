@@ -5,7 +5,15 @@ HomericShipSail/
 museum_objects/
 voyager/
 *.vscode
+hacking_the_humanities_f23/
+
+# Server specific things
+.ftpquota
+.htaccess
 
 # this is for a documentation library I'm messing around with, only temporary - Henry 10/31/2023
 Writerside 
 *.idea
+
+# Mac specific things
+*.DS_Store
