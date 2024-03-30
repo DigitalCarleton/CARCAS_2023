@@ -1,5 +1,10 @@
 # CARCAS
 
+THIS REPOSITORY IS NO LONGER BEING MAINTAINED
+The project has moved to github.com/DigitalCarleton/carcas 
+where we are using Datalad in combination with git 
+for better management of large files.
+
 Maintained by:
 
 - Erin Watson (watsona@carleton.edu)
